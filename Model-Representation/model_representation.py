@@ -18,6 +18,7 @@ with open(file, mode ='r')as file:
 
 m = len(x_train)
 
+### Printing the data set
 # for i in range(m):
 #     print(f"x^{i} = {x_train[i]}, y^{i} = {y_train[i]}")
 

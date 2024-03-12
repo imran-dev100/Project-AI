@@ -2,7 +2,7 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 
-file='data/ice-cream-sales-temperature.csv'
+file = './data/ice-cream-sales-temperature.csv'
 
 x_train = np.array([]) # Temperature in Fahrenheit
 y_train = np.array([]) # Sales in percentage

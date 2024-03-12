@@ -36,8 +36,12 @@ def compute_cost(x, y, w, b):
 #-------------------------------------------------#
 file = './data/ice-cream-sales-temperature.csv'
 
+
+### Initializing empty arrays for training data
 x_train = np.array([]) # Temperature in Fahrenheit
 y_train = np.array([]) # Sales in percentage
+
+
 
 ### Parsing data set from file
 with open(file, mode ='r')as file:
@@ -48,13 +52,14 @@ with open(file, mode ='r')as file:
     x_train = np.append(x_train, int(line[0]))
     y_train = np.append(y_train, float(line[1]))
 
+
+
 ### Plotting a graph with x as marker and blue as color
 plt.scatter(x_train, y_train, marker = 'x', c = '#0080FF')
 plt.title('Ice cream sales with different temperature')
 plt.xlabel('Temperature in Fahrenheit')
 plt.ylabel('Sales in percentage')
 plt.show()
-
 
 
 
@@ -67,13 +72,15 @@ w_array = np.arange(-24, 25, 1)  # The stop value is exclusive, so use 25 to inc
 # w_array = np.random.randint(-24, 25, size=10)  # Array of 10 random integers between -24 and 24, inclusive.
 # w_array = np.full((5,), -24)  # Creates an array of 5 elements, each initialized to -24.
 
-
+### Initializing empty array for cost output
 cost_array = np.array([])
 
 for w in w_array:
    cost = compute_cost(x_train, y_train, w, b)
    cost_array = np.append(cost_array, cost)
    print(f"cost for w:{w} & b:{b} = {cost}")
+
+
 
 ### Plotting a graph with x as marker and blue as color
 plt.plot(w_array, cost_array, marker = 'x', c = '#8080FF')

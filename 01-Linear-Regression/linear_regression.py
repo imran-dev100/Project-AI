@@ -1,9 +1,9 @@
 import os
 import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils.data_processor import load_data, plot_data_graph
 import numpy as np
 import matplotlib.pyplot as plt
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.data_processor import load_data, plot_data_graph
 
 #-------------------------------------------------#
 #      MODEL FUNCTION FOR LINEAR REGRESSION       #
@@ -31,7 +31,6 @@ def compute_linear_regression(x, w, b):
 #-------------------------------------------------#
 
 x_train,y_train = load_data()
-m = len(x_train)
 
 
 ### Printing the data set

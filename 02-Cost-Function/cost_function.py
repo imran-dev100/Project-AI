@@ -1,6 +1,9 @@
+import os
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
-import csv
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.data_processor import load_data, plot_data_graph
 
 #-------------------------------------------------#
 #              COMPUTE COST FUNCTION              #
@@ -34,33 +37,9 @@ def compute_cost(x, y, w, b):
 #-------------------------------------------------#
 #                 MAIN SOURCE CODE                #
 #-------------------------------------------------#
-file = './data/ice-cream-sales-temperature.csv'
 
-
-### Initializing empty arrays for training data
-x_train = np.array([]) # Temperature in Fahrenheit
-y_train = np.array([]) # Sales in percentage
-
-
-
-### Parsing data set from file
-with open(file, mode ='r')as file:
-  csvFile = csv.reader(file)
-  header = next(csvFile) # skipping headers
-  
-  for line in csvFile:
-    x_train = np.append(x_train, int(line[0]))
-    y_train = np.append(y_train, float(line[1]))
-
-
-
-### Plotting a graph with x as marker and blue as color
-plt.scatter(x_train, y_train, marker = 'x', c = '#0080FF')
-plt.title('Ice cream sales with different temperature')
-plt.xlabel('Temperature in Fahrenheit')
-plt.ylabel('Sales in percentage')
-plt.show()
-
+x_train,y_train = load_data()
+plot_data_graph(x_train, y_train)
 
 
 ### Assuming bias for the cost function
@@ -79,7 +58,7 @@ cost_array = np.array([])
 for w in w_array:
    cost = compute_cost(x_train, y_train, w, b)
    cost_array = np.append(cost_array, cost)
-   print(f"cost for w:{w} & b:{b} = {cost}")
+#    print(f"cost for w:{w} & b:{b} = {cost}")
 
 
 

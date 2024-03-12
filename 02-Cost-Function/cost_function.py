@@ -63,9 +63,10 @@ plt.show()
 
 
 
-### Assuming weights for the cost function
+### Assuming bias for the cost function
 b = 24
 
+### Assuming weight for the cost function
 w_array = np.arange(-24, 25, 1)  # The stop value is exclusive, so use 25 to include 24 with step 1
 # w_array = np.linspace(-24, 24, 10)  # 10 values evenly spaced between -24 and 24.
 # w_array = np.random.uniform(-24, 24, size=10)  # Array of 10 random floats between -24 and 24.

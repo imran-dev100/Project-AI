@@ -31,6 +31,9 @@ def compute_cost(x, y, w, b):
 
     return total_cost
 
+#-------------------------------------------------#
+#                 MAIN SOURCE CODE                #
+#-------------------------------------------------#
 file = './data/ice-cream-sales-temperature.csv'
 
 x_train = np.array([]) # Temperature in Fahrenheit
@@ -45,7 +48,7 @@ with open(file, mode ='r')as file:
     x_train = np.append(x_train, int(line[0]))
     y_train = np.append(y_train, float(line[1]))
 
-# Plotting a graph with x as marker and blue as color
+### Plotting a graph with x as marker and blue as color
 plt.scatter(x_train, y_train, marker = 'x', c = '#0080FF')
 plt.title('Ice cream sales with different temperature')
 plt.xlabel('Temperature in Fahrenheit')
@@ -54,6 +57,8 @@ plt.show()
 
 
 
+
+### Assuming weights for the cost function
 b = 24
 
 w_array = np.arange(-24, 25, 1)  # The stop value is exclusive, so use 25 to include 24 with step 1
@@ -67,11 +72,10 @@ cost_array = np.array([])
 
 for w in w_array:
    cost = compute_cost(x_train, y_train, w, b)
-   print(f"cost: {cost}")
    cost_array = np.append(cost_array, cost)
+   print(f"cost for w:{w} & b:{b} = {cost}")
 
-
-# Plotting a graph with x as marker and blue as color
+### Plotting a graph with x as marker and blue as color
 plt.plot(w_array, cost_array, marker = 'x', c = '#8080FF')
 plt.title('Cost function plot')
 plt.xlabel('w')

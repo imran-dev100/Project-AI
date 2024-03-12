@@ -1,12 +1,15 @@
-import csv
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.data_processor import load_data, plot_data_graph
 import numpy as np
 import matplotlib.pyplot as plt
 
 #-------------------------------------------------#
-#       MODEL FUNCTIONFOR LINEAR REGRESSION       #
+#      MODEL FUNCTION FOR LINEAR REGRESSION       #
 #-------------------------------------------------#
 
-def compute_model_output(x, w, b):
+def compute_linear_regression(x, w, b):
     """
     Computes the prediction of a linear model
     Args:
@@ -22,43 +25,22 @@ def compute_model_output(x, w, b):
         
     return f_wb
 
+
 #-------------------------------------------------#
 #                 MAIN SOURCE CODE                #
 #-------------------------------------------------#
-file = './data/ice-cream-sales-temperature.csv'
 
-
-### Initializing empty arrays for training data
-x_train = np.array([]) # Temperature in Fahrenheit
-y_train = np.array([]) # Sales in percentage
-
-
-
-### Parsing data set from file
-with open(file, mode ='r')as file:
-  csvFile = csv.reader(file)
-  header = next(csvFile) # skipping headers
-  
-  for line in csvFile:
-    x_train = np.append(x_train, int(line[0]))
-    y_train = np.append(y_train, float(line[1]))
-
+x_train,y_train = load_data()
 m = len(x_train)
-
 
 
 ### Printing the data set
 # for i in range(m):
 #     print(f"x^{i} = {x_train[i]}, y^{i} = {y_train[i]}")
 
+plot_data_graph(x_train, y_train)
 
 
-### Plotting a graph with x as marker and blue as color
-plt.scatter(x_train, y_train, marker = 'x', c = '#0080FF')
-plt.title('Ice cream sales with different temperature')
-plt.xlabel('Temperature in Fahrenheit')
-plt.ylabel('Sales in percentage')
-plt.show()
 
 
 # Assuming weight for the cost function
@@ -67,7 +49,7 @@ w = 24
 # Assuming bias for the cost function
 b = 24
 
-tmp_f_wb = compute_model_output(x_train, w, b,)
+tmp_f_wb = compute_linear_regression(x_train, w, b,)
 
 # Plot our model prediction
 plt.plot(x_train, tmp_f_wb, c='#000080',label='Our Prediction')

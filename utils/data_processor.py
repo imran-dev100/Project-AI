@@ -23,6 +23,7 @@ def load_data():
     
     return x_train,y_train
 
+
 def load_housing_data():
     path = Path(__file__).parent.absolute()
     file = f'{path}/data/Housing-2.csv'
